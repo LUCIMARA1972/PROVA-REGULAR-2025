@@ -41,10 +41,10 @@ maximo = round(df[coluna_escolhida].dropna().max(),2)
 
 st.write(f'A coluna escolhida foi {coluna_escolhida}. Média = {media}. Desvio = {desvio}. Mediana = {mediana} e Máximo = {maximo}')
 st.write('Histograma')
-fig = px.histogram(df,x='ignorado')
+fig = px.histogram(df,x=coluna_escolhida)
 st.plotly_chart(fig)
 st.write('Boxplot')
-fig2 = px.box(df,x='ignorado')
+fig2 = px.box(df,x=coluna_escolhida)
 st.plotly_chart(fig2)
 
 st.subheader('Análises Multivariadas')
