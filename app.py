@@ -112,19 +112,18 @@ A variável {coluna_escolhida} representa o número de óbitos registrados.
 Este indicador é fundamental para mensurar a gravidade da doença e avaliar a efetividade das políticas públicas de controle e vacinação.  
 O monitoramento dessa variável permite a identificação de áreas com maior letalidade e a priorização de ações de saúde pública.
 """)
-else: 
-    comentario = ""
-
-st.markdown(comentario)
-
+   
 if 'ignorado' in coluna_escolhida.lower():
     ranking_UF = df_ranking.groupby('UF')['ignorado'].sum().sort_values(ascending=False).head(10)
     st.subheader("Top 3 UF com mais casos sem desfecho")
     st.dataframe(ranking_UF)
 
-top3 = ranking_UF.head(3)
+    top3 = ranking_UF.head(3)
 
-comentario_top3 = f"""Os estados com maior número de registros sem desfecho é **{top3.index[0]}** com {top3.iloc[0]}** casos.
+    comentario_top3 = f"""Os estados com maior número de registros sem desfecho é **{top3.index[0]}** com {top3.iloc[0]}** casos.
 Em seguida, temos **{top3.index[0]}** com {top3.iloc[0]}** casos e **{top3.index[0]}** com {top3.iloc[0]}** casos.
 Esses estados podem indicar maiores dificuldades na finalização dos casos notificados, sinalizando a necessidade de melhorias nos processos de vigilancia epidemiologica local."""
+    
+    st.markdown(comentario_top3)
+    
 
