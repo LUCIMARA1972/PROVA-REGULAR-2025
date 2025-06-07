@@ -38,6 +38,7 @@ media = round(df[coluna_escolhida].dropna().mean(),2)
 desvio = round(df[coluna_escolhida].dropna().std(),2)
 mediana = round(df[coluna_escolhida].dropna().quantile(0.5),2)
 maximo = round(df[coluna_escolhida].dropna().max(),2)
+minimo = round(df[coluna_escolhida].dropna().min(),2)
 
 st.write(f'A coluna escolhida foi {coluna_escolhida}. Média = {media}. Desvio = {desvio}. Mediana = {mediana}. Máximo = {maximo} e Mínimo = {minimo}')
 st.write('Histograma')
