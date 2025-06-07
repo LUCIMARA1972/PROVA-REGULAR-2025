@@ -120,10 +120,10 @@ if 'ignorado' in coluna_escolhida.lower():
 
     top3 = ranking_UF.head(3)
 
-    comentario_top3 = f"""Os estados com maior número de registros sem desfecho é **{top3.index[0]}** com {top3.iloc[0]}** casos.
-Em seguida, temos **{top3.index[0]}** com {top3.iloc[0]}** casos e **{top3.index[0]}** com {top3.iloc[0]}** casos.
+    comentario_top3 = f"""Os estados com maior número de registros sem desfecho é: NUMERO 1 = {top3.index[0]} com {top3.iloc[0]} casos, 
+NUMERO 2 = {top3.index[1]} com {top3.iloc[1]} casos e NUMERO 3 = {top3.index[2]} com {top3.iloc[2]} casos.
 Esses estados podem indicar maiores dificuldades na finalização dos casos notificados, sinalizando a necessidade de melhorias nos processos de vigilancia epidemiologica local."""
     
     st.markdown(comentario_top3)
-    
+
 
