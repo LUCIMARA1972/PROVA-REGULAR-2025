@@ -50,17 +50,18 @@ fig2 = px.box(df,x=coluna_escolhida)
 st.plotly_chart(fig2)
 
 st.subheader('Análises Multivariadas')
-lista_de_escolha = st.multiselect('Escolha até 3 variaveis:',['ignorado', 'obito', 'vivo'])
-st.markdown('Gráfico de dispersão')
-if len(lista_de_escolha) != 3:
-    st.warning('Selecione exatamente 3 colunas para gerar os gráficos.')
-else:
-    fig3 = px.scatter(df, x=lista_de_escolha[0], y=lista_de_escolha[1], color=lista_de_escolha[2])
+lista_de_escolha = st.multiselect('Escolha 2 variaveis:', df.columns.tolist(), max_selections=2)
+st.markdown("Gráfico de dispersão")
+if len(lista_de_escolha) == 2:
+    fig3 = px.scatter(df, x=lista_de_escolha[0], y=lista_de_escolha[1])
     st.plotly_chart(fig3)
+else:
+    st.warning('Por favor, selecione exatamente 2 variáveis para gerar o gráfico de dispersão')
 
-    st.markdown('Gráfico de Caixa')
-    fig4 = px.box(df, x=lista_de_escolha[0], y=lista_de_escolha[1], color=lista_de_escolha[2])
-    st.plotly_chart(fig4)   
+st.markdown('Gráfico de Caixa')
+fig4 = st.selectbox('Selecione uma variavel para o boxplot:', df.columns.tolist())
+fig4 = px.box(df, y=fig4)
+st.plotly_chart(fig4)   
 
 col1, col2 = st.columns(2)
 with col1:
