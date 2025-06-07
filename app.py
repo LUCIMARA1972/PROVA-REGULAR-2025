@@ -91,7 +91,7 @@ Esses valores representam o comportamento dos dados da coluna escolhida.
 Os valores apresentados sintetizam as principais medidas descritivas da coluna escolhida para ser analisada. A média e a mediana indicam a tendencia central, enquanto o desvio padrão e o intervalo caracterizam a dispesão dos dados. A análise gráfica facilita a identificação de padrões, distribuição dos dados e possiveis outliers, auxiliando na interpretação estatística e na compreensão da variabilidade da amostra.""")
 
 if coluna_escolhida.lower() == 'ignorado':
-    st.markdown(f"""
+    st.subheader(f"""
 *Análise da variável {coluna_escolhida}:*  
 A variável {coluna_escolhida} representa os registros de casos sem desfecho informado no sistema.  
 Esses dados são inseridos manualmente e indicam a ausência de informações sobre a evolução clínica dos indivíduos afetados, comprometendo a qualidade da vigilância epidemiológica.  
@@ -99,14 +99,14 @@ Altos valores nesta variável sugerem falhas no encerramento adequado dos casos,
 """)
 
 elif coluna_escolhida.lower() == 'vivo':
-    st.markdown(f"""
+    st.subheader(f"""
 *Análise da variável {coluna_escolhida}:*  
 A variável {coluna_escolhida} refere-se aos casos com evolução favorável.  
 A alta proporção de casos classificados como vivos indica eficiência no atendimento clínico e possíveis avanços nas medidas de prevenção, diagnóstico e tratamento da Febre Amarela no período analisado.
 """)
 
 elif coluna_escolhida.lower() == 'obito':
-    st.markdown(f"""
+    st.subheader(f"""
 *Análise da variável {coluna_escolhida}:*  
 A variável {coluna_escolhida} representa o número de óbitos registrados.  
 Este indicador é fundamental para mensurar a gravidade da doença e avaliar a efetividade das políticas públicas de controle e vacinação.  
@@ -124,6 +124,6 @@ if 'ignorado' in coluna_escolhida.lower():
 NUMERO 2 = {top3.index[1]} com {top3.iloc[1]} casos e NUMERO 3 = {top3.index[2]} com {top3.iloc[2]} casos.
 Esses estados podem indicar maiores dificuldades na finalização dos casos notificados, sinalizando a necessidade de melhorias nos processos de vigilancia epidemiologica local."""
     
-    st.markdown(comentario_top3)
+    st.subheader(comentario_top3)
 
 
