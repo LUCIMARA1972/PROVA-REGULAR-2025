@@ -84,5 +84,5 @@ st.markdown(f"""
 - *Valor Mínimo:* {minimo}
 
 Esses valores representam o comportamento dos dados da coluna escolhida.  
-Use os gráficos acima para analisar a distribuição dos dados escolhidos e identificar possíveis outliers, comparando a dispersão em relação a media e mediana
-""")
+Os valores apresentados sintetizam as principais medidas descritivas da coluna escolhida para ser analisada. A média e a mediana indicam a tendencia central, enquanto o desvio padrão e o intervalo caracterizam a dispesão dos dados. A análise gráfica facilita a identificação de padrões, distribuição dos dados e possiveis outliers, auxiliando na internpretação estatística e na compreensão da variabilidade da amostra.""")
+
