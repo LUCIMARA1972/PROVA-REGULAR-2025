@@ -89,3 +89,31 @@ st.markdown(f"""
 Esses valores representam o comportamento dos dados da coluna escolhida.  
 Os valores apresentados sintetizam as principais medidas descritivas da coluna escolhida para ser analisada. A média e a mediana indicam a tendencia central, enquanto o desvio padrão e o intervalo caracterizam a dispesão dos dados. A análise gráfica facilita a identificação de padrões, distribuição dos dados e possiveis outliers, auxiliando na interpretação estatística e na compreensão da variabilidade da amostra.""")
 
+if coluna_escolhida.lower() == 'ignorado':
+    st.markdown(f"""
+*Análise da variável {coluna_escolhida}:*  
+A variável {coluna_escolhida} representa os registros de casos sem desfecho informado no sistema.  
+Esses dados são inseridos manualmente e indicam a ausência de informações sobre a evolução clínica dos indivíduos afetados, comprometendo a qualidade da vigilância epidemiológica.  
+Altos valores nesta variável sugerem falhas no encerramento adequado dos casos, podendo indicar problemas de subnotificação ou baixa qualidade dos registros, impactando diretamente a análise dos dados de morbidade e mortalidade pela Febre Amarela.
+""")
+
+elif coluna_escolhida.lower() == 'vivo':
+    st.markdown(f"""
+*Análise da variável {coluna_escolhida}:*  
+A variável {coluna_escolhida} refere-se aos casos com evolução favorável.  
+A alta proporção de casos classificados como vivos indica eficiência no atendimento clínico e possíveis avanços nas medidas de prevenção, diagnóstico e tratamento da Febre Amarela no período analisado.
+""")
+
+elif coluna_escolhida.lower() == 'óbito':
+    st.markdown(f"""
+*Análise da variável {coluna_escolhida}:*  
+A variável {coluna_escolhida} representa o número de óbitos registrados.  
+Este indicador é fundamental para mensurar a gravidade da doença e avaliar a efetividade das políticas públicas de controle e vacinação.  
+O monitoramento dessa variável permite a identificação de áreas com maior letalidade e a priorização de ações de saúde pública.
+""")
+
+if 'UF' in df.columns:
+    ranking_UF = df.groupby('UF')['ignorado'].sum().sort_values(ascending=False).head(10)
+    st.subheader("Top 3 UF com mais casos sem desfecho")
+    st.dataframe(ranking_UF)
+    
