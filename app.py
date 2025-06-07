@@ -124,6 +124,6 @@ if 'ignorado' in coluna_escolhida.lower():
 NUMERO 2 = {top3.index[1]} com {top3.iloc[1]} casos e NUMERO 3 = {top3.index[2]} com {top3.iloc[2]} casos.
 Esses estados podem indicar maiores dificuldades na finalização dos casos notificados, sinalizando a necessidade de melhorias nos processos de vigilancia epidemiologica local."""
     
-    st.subheader(comentario_top3)
+    st.markdown(comentario_top3)
 
 
