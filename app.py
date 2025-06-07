@@ -31,11 +31,13 @@ df.loc[df[coluna_escolhida] >999, coluna_escolhida] = 999
 df.loc[df[coluna_escolhida] <0, coluna_escolhida] = 100
 
 lista_de_colunas = df.columns
-coluna_escolhida = st.selectbox('selecione a coluna',lista_de_colunas)
-media = round(df[coluna_escolhida].mean(),2)
-desvio = round(df[coluna_escolhida].std(),2)
-mediana = round(df[coluna_escolhida].quantile(0.5),2)
-maximo = round(df[coluna_escolhida].max(),2)
+coluna_escolhida = st.selectbox('selecione a coluna', df.columns)
+st.write("Dados da coluna selecionada:")
+st.write(df[coluna_escolhida])
+media = round(df[coluna_escolhida].dropna().mean(),2)
+desvio = round(df[coluna_escolhida].dropna().std(),2)
+mediana = round(df[coluna_escolhida].dropna().quantile(0.5),2)
+maximo = round(df[coluna_escolhida].dropna().max(),2)
 
 st.write(f'A coluna escolhida foi {coluna_escolhida}. Média = {media}. Desvio = {desvio}. Mediana = {mediana} e Máximo = {maximo}')
 st.write('Histograma')
@@ -84,5 +86,5 @@ st.markdown(f"""
 - *Valor Mínimo:* {minimo}
 
 Esses valores representam o comportamento dos dados da coluna escolhida.  
-Os valores apresentados sintetizam as principais medidas descritivas da coluna escolhida para ser analisada. A média e a mediana indicam a tendencia central, enquanto o desvio padrão e o intervalo caracterizam a dispesão dos dados. A análise gráfica facilita a identificação de padrões, distribuição dos dados e possiveis outliers, auxiliando na internpretação estatística e na compreensão da variabilidade da amostra.""")
+Os valores apresentados sintetizam as principais medidas descritivas da coluna escolhida para ser analisada. A média e a mediana indicam a tendencia central, enquanto o desvio padrão e o intervalo caracterizam a dispesão dos dados. A análise gráfica facilita a identificação de padrões, distribuição dos dados e possiveis outliers, auxiliando na interpretação estatística e na compreensão da variabilidade da amostra.""")
 
