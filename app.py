@@ -88,7 +88,24 @@ st.markdown(f"""
 - *Valor Mínimo:* {minimo}
 
 Esses valores representam o comportamento dos dados da coluna escolhida.  
-Os valores apresentados sintetizam as principais medidas descritivas da coluna escolhida para ser analisada. A média e a mediana indicam a tendencia central, enquanto o desvio padrão e o intervalo caracterizam a dispesão dos dados. A análise gráfica facilita a identificação de padrões, distribuição dos dados e possiveis outliers, auxiliando na interpretação estatística e na compreensão da variabilidade da amostra.""")
+Os valores apresentados sintetizam as principais medidas descritivas da coluna escolhida para ser analisada. A média e a mediana indicam a tendencia central, enquanto o desvio padrão e o intervalo caracterizam a dispersão dos dados. A análise gráfica facilita a identificação de padrões, distribuição dos dados e possiveis outliers, auxiliando na interpretação estatística e na compreensão da variabilidade da amostra.""")
+
+
+q1 = df[coluna_escolhida].quantile(0.25)
+q3 = df[coluna_escolhida].quantile(0.75)
+iqr = q3 - q1
+
+limite_inferior = q1 - 1.5 * iqr
+limite_superior = q3 + 1.5 * iqr
+
+outliers = df[(df[coluna_escolhida] < limite_inferior) | (df[coluna_escolhida] > limite_superior)]
+
+quantidade_outliers = outliers.shape[0]
+
+st.write(f"Quantidade de outliers detectados na coluna *{coluna_escolhida}: **{quantidade_outliers}*")
+st.write(f"Limites para detecção de outliers: Inferior = {limite_inferior:.2f}, Superior = {limite_superior:.2f}")
+
+st.dataframe(outliers)
 
 if coluna_escolhida.lower() == 'ignorado':
     st.subheader(f"""
