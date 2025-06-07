@@ -4,6 +4,7 @@ import plotly.express as px
 
 # Codigo atualizado corretamente
 df = pd.read_csv('bases_upload/tabela1_obitos_por_estado.csv', sep=',')
+df_ranking = df.copy()
 df = df.drop(columns=['UF'])
              
 colunas_alvo = ['ignorado','vivo','obito']
@@ -104,16 +105,26 @@ A variável {coluna_escolhida} refere-se aos casos com evolução favorável.
 A alta proporção de casos classificados como vivos indica eficiência no atendimento clínico e possíveis avanços nas medidas de prevenção, diagnóstico e tratamento da Febre Amarela no período analisado.
 """)
 
-elif coluna_escolhida.lower() == 'óbito':
+elif coluna_escolhida.lower() == 'obito':
     st.markdown(f"""
 *Análise da variável {coluna_escolhida}:*  
 A variável {coluna_escolhida} representa o número de óbitos registrados.  
 Este indicador é fundamental para mensurar a gravidade da doença e avaliar a efetividade das políticas públicas de controle e vacinação.  
 O monitoramento dessa variável permite a identificação de áreas com maior letalidade e a priorização de ações de saúde pública.
 """)
+else: 
+    comentario = ""
 
-if 'UF' in df.columns:
-    ranking_UF = df.groupby('UF')['ignorado'].sum().sort_values(ascending=False).head(10)
+st.markdown(comentario)
+
+if 'ignorado' in coluna_escolhida.lower():
+    ranking_UF = df_ranking.groupby('UF')['ignorado'].sum().sort_values(ascending=False).head(10)
     st.subheader("Top 3 UF com mais casos sem desfecho")
     st.dataframe(ranking_UF)
-    
+
+top3 = ranking_UF.head(3)
+
+comentario_top3 = f"""Os estados com maior número de registros sem desfecho é **{top3.index[0]}** com {top3.iloc[0]}** casos.
+Em seguida, temos **{top3.index[0]}** com {top3.iloc[0]}** casos e **{top3.index[0]}** com {top3.iloc[0]}** casos.
+Esses estados podem indicar maiores dificuldades na finalização dos casos notificados, sinalizando a necessidade de melhorias nos processos de vigilancia epidemiologica local."""
+
